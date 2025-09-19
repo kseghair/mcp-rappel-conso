@@ -1,98 +1,59 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Projet d'Exposition de Serveur MCP avec NestJS et Greeting Tool
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Ce projet est une application NestJS conçue pour exposer un service (comme un serveur MCP) sur internet. Il intègre un "Greeting Tool" personnalisé, le tout dans un environnement conteneurisé avec Docker et exposé publiquement via Ngrok.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## ✨ Fonctionnalités
 
-## Description
+-   **Exposition de Serveur MCP** : La configuration est prête pour exposer un serveur MCP via un tunnel applicatif sécurisé.
+-   **Greeting Tool Personnalisé** : Inclut un `greeting.tool.ts` comme exemple de fonctionnalité métier et d'interaction.
+-   **Framework NestJS** : L'application est bâtie sur un framework Node.js moderne, scalable et performant.
+-   **Environnement Dockerisé** : L'ensemble est conteneurisé avec Docker et orchestré par Docker Compose pour une portabilité maximale.
+-   **Intégration Ngrok** : Un service `ngrok` est inclus pour exposer instantanément et de manière sécurisée l'API locale sur internet.
+-   **Build Docker Multi-Stage** : Le `Dockerfile` est optimisé pour la production, créant une image finale légère.
+-   **Gestion des Secrets** : Utilisation d'un fichier `.env` pour gérer les clés d'API en toute sécurité.
+-   **Workflow de Développement Complet** : Le projet est configuré avec Git, un `.gitignore` et un `.dockerignore`.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🚀 Démarrage Rapide
 
-## Project setup
+### Prérequis
 
-```bash
-$ npm install
-```
+-   [Docker](https://www.docker.com/get-started)
+-   [Docker Compose](https://docs.docker.com/compose/install/)
+-   Un compte [Ngrok](https://ngrok.com/) et son authtoken.
 
-## Compile and run the project
+### Étapes d'installation
 
-```bash
-# development
-$ npm run start
+1.  **Clonez le dépôt :**
+    ```bash
+    git clone https://github.com/kseghair/test-mcp-nestjs.git
+    cd test-mcp-nestjs
+    ```
 
-# watch mode
-$ npm run start:dev
+2.  **Configurez Ngrok :**
+    Créez un fichier `.env` à la racine du projet et ajoutez-y votre token d'authentification Ngrok :
+    ```
+    NGROK_AUTHTOKEN=VOTRE_TOKEN_ICI
+    ```
 
-# production mode
-$ npm run start:prod
-```
+3.  **Lancez les services :**
+    ```bash
+    docker-compose up --build -d
+    ```
 
-## Run tests
+4.  **Accédez à votre application :**
+    -   Votre API est accessible localement sur `http://localhost:3000`.
+    -   L'interface web de Ngrok est sur `http://localhost:4040`.
+    -   Votre **URL publique** est visible dans l'interface Ngrok.
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Arrêter les services
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+docker-compose down
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## 🛠️ Technologies utilisées
 
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+-   [NestJS](https://nestjs.com/)
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [Docker](https://www.docker.com/)
+-   [Ngrok](https://ngrok.com/)
