@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    container_name: nest-app
+    # La variable d'environnement sera chargée depuis le .env
+    env_file:
+      - .env
+
+  ngrok:
+    image: ngrok/ngrok:latest
+    ports:
+      - '4040:4040' # Pour l'interface web de ngrok
+    environment:
+      # Utilise la variable du fichier .env
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+    command: 'http app:3000'
+    depends_on:
+      - app
