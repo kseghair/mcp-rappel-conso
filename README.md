@@ -1,57 +1,59 @@
-# Projet d'Exposition de Serveur MCP avec NestJS et Greeting Tool
+# MCP Server Exposure Project with NestJS and Greeting Tool
 
-Ce projet est une application NestJS conçue pour exposer un service (comme un serveur MCP) sur internet. Il intègre un "Greeting Tool" personnalisé, le tout dans un environnement conteneurisé avec Docker et exposé publiquement via Ngrok.
+This project is a NestJS application designed to expose a service (like an MCP server) to the internet. It features a custom "Greeting Tool", all within a containerized environment using Docker and publicly exposed via Ngrok.
 
-## ✨ Fonctionnalités
+## ✨ Features
 
--   **Exposition de Serveur MCP** : La configuration est prête pour exposer un serveur MCP via un tunnel applicatif sécurisé.
--   **Greeting Tool Personnalisé** : Inclut un `greeting.tool.ts` comme exemple de fonctionnalité métier et d'interaction.
--   **Framework NestJS** : L'application est bâtie sur un framework Node.js moderne, scalable et performant.
--   **Environnement Dockerisé** : L'ensemble est conteneurisé avec Docker et orchestré par Docker Compose pour une portabilité maximale.
--   **Intégration Ngrok** : Un service `ngrok` est inclus pour exposer instantanément et de manière sécurisée l'API locale sur internet.
--   **Build Docker Multi-Stage** : Le `Dockerfile` est optimisé pour la production, créant une image finale légère.
--   **Gestion des Secrets** : Utilisation d'un fichier `.env` pour gérer les clés d'API en toute sécurité.
--   **Workflow de Développement Complet** : Le projet est configuré avec Git, un `.gitignore` et un `.dockerignore`.
+-   **MCP Server Exposure**: The configuration is ready to expose an MCP server through a secure application tunnel.
+-   **Custom Greeting Tool**: Includes a `greeting.tool.ts` as an example of a custom business feature and interaction.
+-   **NestJS Framework**: The application is built on a modern, scalable, and high-performance Node.js framework.
+-   **Dockerized Environment**: The entire setup is containerized with Docker and orchestrated by Docker Compose for maximum portability.
+-   **Ngrok Integration**: An `ngrok` service is included to instantly and securely expose the local API to the internet.
+-   **Multi-Stage Docker Build**: The `Dockerfile` is optimized for production, creating a lightweight final image.
+-   **Secrets Management**: Uses a `.env` file to securely manage API keys (like the Ngrok authtoken).
+-   **Complete Development Workflow**: The project is configured with Git, a `.gitignore`, and a `.dockerignore`.
 
-## 🚀 Démarrage Rapide
+## 🚀 Getting Started
 
-### Prérequis
+### Prerequisites
 
 -   [Docker](https://www.docker.com/get-started)
 -   [Docker Compose](https://docs.docker.com/compose/install/)
--   Un compte [Ngrok](https://ngrok.com/) et son authtoken.
+-   An [Ngrok](https://ngrok.com/) account and its authtoken.
 
-### Étapes d'installation
+### Installation Steps
 
-1.  **Clonez le dépôt :**
+1.  **Clone the repository:**
     ```bash
     git clone https://github.com/kseghair/test-mcp-nestjs.git
     cd test-mcp-nestjs
     ```
 
-2.  **Configurez Ngrok :**
-    Créez un fichier `.env` à la racine du projet et ajoutez-y votre token d'authentification Ngrok :
+2.  **Configure Ngrok:**
+    Create a `.env` file in the project root and add your Ngrok authentication token:
     ```
-    NGROK_AUTHTOKEN=VOTRE_TOKEN_ICI
+    NGROK_AUTHTOKEN=YOUR_TOKEN_HERE
     ```
 
-3.  **Lancez les services :**
+3.  **Launch the services:**
+    Use Docker Compose to build the images and start the containers in the background.
     ```bash
     docker-compose up --build -d
     ```
 
-4.  **Accédez à votre application :**
-    -   Votre API est accessible localement sur `http://localhost:3000`.
-    -   L'interface web de Ngrok est sur `http://localhost:4040`.
-    -   Votre **URL publique** est visible dans l'interface Ngrok.
+4.  **Access your application:**
+    -   Your API is accessible locally at `http://localhost:3000`.
+    -   The Ngrok web interface is at `http://localhost:4040`.
+    -   Your **public URL** is visible in the Ngrok interface.
 
-### Arrêter les services
+### Stopping the services
 
+To stop all containers, run:
 ```bash
 docker-compose down
 ```
 
-## 🛠️ Technologies utilisées
+## 🛠️ Tech Stack
 
 -   [NestJS](https://nestjs.com/)
 -   [TypeScript](https://www.typescriptlang.org/)
