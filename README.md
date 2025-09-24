@@ -1,17 +1,16 @@
-# MCP Server Exposure Project with NestJS and Greeting Tool
+# MCP Server Project with data.gouv.fr Data 
 
-This project is a NestJS application designed to expose a service (like an MCP server) to the internet. It features a custom "Greeting Tool", all within a containerized environment using Docker and publicly exposed via Ngrok.
+This project is a NestJS application designed to interact with the open data platform [data.gouv.fr](https://data.gouv.fr), specifically to retrieve data from `RappelConso`. The entire application is containerized with Docker and made publicly accessible via Ngrok.
 
 ## ✨ Features
 
 -   **MCP Server Exposure**: The configuration is ready to expose an MCP server through a secure application tunnel.
--   **Custom Greeting Tool**: Includes a `greeting.tool.ts` as an example of a custom business feature and interaction.
+-   **data.gouv.fr Integration**: Provides tools to retrieve and use data from `RappelConso`.
 -   **NestJS Framework**: The application is built on a modern, scalable, and high-performance Node.js framework.
 -   **Dockerized Environment**: The entire setup is containerized with Docker and orchestrated by Docker Compose for maximum portability.
 -   **Ngrok Integration**: An `ngrok` service is included to instantly and securely expose the local API to the internet.
 -   **Multi-Stage Docker Build**: The `Dockerfile` is optimized for production, creating a lightweight final image.
 -   **Secrets Management**: Uses a `.env` file to securely manage API keys (like the Ngrok authtoken).
--   **Complete Development Workflow**: The project is configured with Git, a `.gitignore`, and a `.dockerignore`.
 
 ## 🚀 Getting Started
 
@@ -59,3 +58,38 @@ docker-compose down
 -   [TypeScript](https://www.typescriptlang.org/)
 -   [Docker](https://www.docker.com/)
 -   [Ngrok](https://ngrok.com/)
+
+## 📋 Useful Commands
+
+-   **Install dependencies** (outside of Docker):
+    ```bash
+    npm install
+    ```
+-   **Run the application locally**:
+    ```bash
+    npm run start:dev
+    ```
+-   **Lint and fix errors**:
+    ```bash
+    npm run lint
+    ```
+-   **Format the code**:
+    ```bash
+    npm run format
+    ```
+-   **Run unit tests**:
+    ```bash
+    npm run test
+    ```
+-   **Run unit tests**:
+    ```bash
+    npm run test
+    ```
+-   **Run End-to-End (E2E) tests**:
+    ```bash
+    npm run test:e2e
+    ```
+-   **Create a production build**:
+    ```bash
+    npm run build
+    ```

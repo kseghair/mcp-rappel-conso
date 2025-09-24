@@ -1,14 +1,14 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { McpModule, McpTransportType } from '@rekog/mcp-nest';
-import { GreetingTool } from './greeting.tool';
+import { Module } from "@nestjs/common";
+import { HttpModule } from "@nestjs/axios";
+import { McpModule, McpTransportType } from "@rekog/mcp-nest";
+import { RappelConsoTool } from "./rappelconso.tool";
 
 @Module({
   imports: [
+    HttpModule,
     McpModule.forRoot({
-      name: 'my-mcp-server',
-      version: '1.0.0',
+      name: "my-mcp-server",
+      version: "1.0.0",
       transport: McpTransportType.STREAMABLE_HTTP,
       streamableHttp: {
         enableJsonResponse: true,
@@ -17,7 +17,7 @@ import { GreetingTool } from './greeting.tool';
       },
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService, GreetingTool],
+  controllers: [],
+  providers: [RappelConsoTool],
 })
 export class AppModule {}
