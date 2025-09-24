@@ -81,10 +81,6 @@ docker-compose down
     ```bash
     npm run test
     ```
--   **Run unit tests**:
-    ```bash
-    npm run test
-    ```
 -   **Run End-to-End (E2E) tests**:
     ```bash
     npm run test:e2e
