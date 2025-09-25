@@ -1,9 +1,15 @@
-import { Injectable } from "@nestjs/common";
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  Logger,
+} from "@nestjs/common";
 import { HttpService } from "@nestjs/axios";
 import { Tool } from "@rekog/mcp-nest";
 import { z } from "zod";
 import { map } from "rxjs/operators";
 import { firstValueFrom } from "rxjs";
+import { AxiosError } from "axios";
 
 // Interface précise pour un enregistrement de RappelConso
 export interface RappelConsoRecord {
@@ -52,6 +58,7 @@ export interface RappelConsoResponse {
 
 @Injectable()
 export class RappelConsoTool {
+  private readonly logger = new Logger(RappelConsoTool.name);
   private readonly baseUrl =
     "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/rappelconso-v2-gtin-trie/records";
 
@@ -85,10 +92,31 @@ export class RappelConsoTool {
       params.where = query;
     }
 
-    const observable = this.httpService
-      .get<RappelConsoResponse>(this.baseUrl, { params })
-      .pipe(map((response) => response.data));
+    try {
+      const observable = this.httpService
+        .get<RappelConsoResponse>(this.baseUrl, { params })
+        .pipe(map((response) => response.data));
 
-    return firstValueFrom(observable);
+      return await firstValueFrom(observable);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        this.logger.error(
+          `Error fetching data from RappelConso API: ${error.message}`,
+          error.stack,
+        );
+        throw new HttpException(
+          `API Error: ${error.message}`,
+          error.response?.status || HttpStatus.INTERNAL_SERVER_ERROR,
+        );
+      }
+      this.logger.error(
+        `An unexpected error occurred: ${error.message}`,
+        error.stack,
+      );
+      throw new HttpException(
+        "An unexpected error occurred",
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 }

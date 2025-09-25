@@ -70,7 +70,6 @@ Utilisez les commandes suivantes pour les tâches courantes :
 ## 4. Instructions Spécifiques pour Gemini
 
 *   **Tâches courantes** :
-    *   "Ajoute la gestion des erreurs pour les appels API dans `rappelconso.tool.ts`."
     *   "Améliore le `RappelConsoTool` pour permettre de filtrer les rappels par marque."
 
 *   **À faire (Do's)** :
