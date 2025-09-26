@@ -24,8 +24,8 @@ This project is a NestJS application designed to interact with the open data pla
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/kseghair/test-mcp-nestjs.git
-    cd test-mcp-nestjs
+    git clone https://github.com/kseghair/mcp-rappel-conso.git
+    cd mcp-rappel-conso
     ```
 
 2.  **Configure Ngrok:**
